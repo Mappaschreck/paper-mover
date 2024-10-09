@@ -8,9 +8,9 @@ It searches your Paperwork working directory and extracts your data as follows:
 4. if edited files such as paper.1.edited.jpg exist, this is preferred over paper.1.jpg.
 
 All metafiles in the folders, such as
- *paper.1.thumb.jpg
-paper.1.words
-labels
+* paper.1.thumb.jpg
+* paper.1.words
+* labels
 are ignored.
 
 All extracted files are given the name of the original folder in which they were contained so that the date at which it was sorted in Paperwork is retained.
@@ -40,3 +40,5 @@ sudo apt install image2pdf
 bash paper-mover_en.sh
 ```
 (or bash paper-mover_de.sh, if you are using the German version)
+
+Then enter your source directory (usually “papers” in your home directory) and then the target directory.
