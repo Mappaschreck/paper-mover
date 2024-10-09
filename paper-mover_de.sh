@@ -10,6 +10,18 @@ SOURCE_DIR=${SOURCE_DIR:-"$USER_HOME/papers"}
 read -p "Bitte geben Sie das Zielverzeichnis an (Standard: $USER_HOME/paper-mover): " TARGET_DIR
 TARGET_DIR=${TARGET_DIR:-"$USER_HOME/paper-mover"}
 
+# Überprüfen, ob das Zielverzeichnis existiert, und erstellen, falls nicht
+if [ ! -d "$TARGET_DIR" ]; then
+    echo "Zielverzeichnis $TARGET_DIR existiert nicht. Erstelle das Verzeichnis..."
+    mkdir -p "$TARGET_DIR"
+    if [ $? -eq 0 ]; then
+        echo "Verzeichnis erfolgreich erstellt."
+    else
+        echo "Fehler: Konnte das Verzeichnis $TARGET_DIR nicht erstellen."
+        exit 1
+    fi
+fi
+
 # Überprüfen, ob img2pdf installiert ist
 if ! command -v img2pdf &> /dev/null; then
     echo "img2pdf ist nicht installiert. Bitte installiere es mit 'sudo apt install img2pdf'."
