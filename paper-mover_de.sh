@@ -56,7 +56,7 @@ for folder in "$SOURCE_DIR"/*/; do
         fi
 
         # Ersetze .jpg durch .edited.jpg, falls vorhanden und füge nur eine Version hinzu
-        base_name="${jpg_file%.jpg}"  # Basisname ohne .jpg
+        base_name="${jpg_file%.jpg}"  # Base name without .jpg
         edited_file="${base_name}.edited.jpg"
 
         # Wenn .edited.jpg existiert, benutze es, ansonsten nimm die .jpg Datei
@@ -69,6 +69,10 @@ for folder in "$SOURCE_DIR"/*/; do
         fi
     done
 
+    # Sortieren des jpg_files-Arrays mit natürlicher (numerischer) Sortierung
+    IFS=$'\n' jpg_files=($(printf "%s\n" "${jpg_files[@]}" | sort -V))
+    unset IFS
+    
     # Zählen, wie viele interessante .jpg-Dateien vorhanden sind
     file_count=${#jpg_files[@]}
 
