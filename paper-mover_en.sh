@@ -69,6 +69,10 @@ for folder in "$SOURCE_DIR"/*/; do
         fi
     done
 
+    # Sort the jpg_files array using natural (numeric) sorting
+    IFS=$'\n' jpg_files=($(printf "%s\n" "${jpg_files[@]}" | sort -V))
+    unset IFS
+
     # Count how many valid .jpg files exist
     file_count=${#jpg_files[@]}
 
